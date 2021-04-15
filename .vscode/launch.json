@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Window) build and run",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build_workspaceFolder",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}\\a.exe",
+            "stopAtEntry": false,
+            "console": "externalTerminal"
+        }
+    ]
+}

@@ -1,0 +1,116 @@
+<table>
+    <thead>
+        <tr>
+            <th>Submit Time</th>
+            <th> User</th>
+            <th>Problem </th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>00:09</td>
+            <td> 10 </td>
+            <td>  B</td>
+            <td>   Accepted </td>
+        </tr>
+        <tr>
+            <td> 23:59 </td>
+            <td> 6 </td>
+            <td>  J</td>  
+            <td>   A </td>
+        </tr>
+        <tr>
+            <td> 00:10 </td>
+            <td> 5 </td>
+            <td>  B</td>
+            <td>   W </td>
+        </tr>
+        <tr>
+            <td> 00:10 </td>
+            <td> 5 </td>
+            <td>  B</td>
+            <td>   A </td>
+        </tr>
+        <tr>
+            <td> 00:10 </td>
+            <td> 4 </td>
+            <td>  B</td>
+            <td>   A </td>
+        </tr>
+        <tr>
+            <td> 00:20 </td>
+            <td> 11 </td>
+            <td>  B</td>
+            <td>   A </td>
+        </tr>
+        <tr>
+            <td> 00:10 </td>
+            <td> 12 </td>
+            <td>  B</td>
+            <td>   A </td>
+        </tr>
+        <tr>
+            <td> 00:20 </td>
+            <td> 5 </td>
+            <td>  B</td>
+            <td>   W </td>
+        </tr>
+        <tr>
+            <td> 00:30 </td>
+            <td> 5 </td>
+            <td>  B</td>
+            <td>   A </td>
+        </tr>
+    </tbody>
+</table>
+
+10 -/- 1/9 -/- -/- -/- -/- -/- -/- -/- -/- 1 9
+4 -/- 1/10 -/- -/- -/- -/- -/- -/- -/- -/- 1 10
+12 -/- 1/10 -/- -/- -/- -/- -/- -/- -/- -/- 1 10
+11 -/- 1/20 -/- -/- -/- -/- -/- -/- -/- -/- 1 20
+5 -/- 2/30 -/- -/- -/- -/- -/- -/- -/- -/- 1 30
+6 -/- -/- -/- -/- -/- -/- -/- -/- -/- 1/1439 1 1439
+
+<table>
+    <thead>
+        <tr>
+            <th>Submit Time</th>
+            <th> User</th>
+            <th>Problem </th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> 00:09 </td>
+            <td>4 </td>
+            <td>  B</td>
+            <td>   Accepted </td>
+        </tr>
+        <tr>
+            <td>00:21</td>
+            <td>3 </td>
+            <td>A</td>
+            <td>   Accepted   </td>
+        </tr>
+        <tr>
+            <td> 00:22 </td>
+            <td>4 </td>
+            <td>  A </td>
+            <td>   Wrong Answer    </td>
+        </tr>
+        <tr>
+            <td> 00:25 </td>
+            <td>7 </td>
+            <td>D </td>
+            <td>   Wrong Answer</td>
+        </tr>
+        <tr>
+            <td> 01:00 </td>
+            <td>4 </td>
+            <td>A </td>
+            <td>   Accepted    </td>
+        </tr>
+    </tbody>
+</table>
