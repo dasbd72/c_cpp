@@ -1,7 +1,6 @@
 #include<iostream>
 #include<cmath>
-// #include"10993.h"
-#include "function.h"
+#include"10993.h"
 using namespace std;
 
 Polynomial::Polynomial(){

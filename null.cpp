@@ -5,18 +5,20 @@ class test{
 		test(){
 			num  = 0;
 		}
-		int get(){
-			return num;
-		}
-		void add(){
-			num++;
+		void set(int num){
+			cout << num << endl;
+			num = num;
+			cout << this->num << endl;
+			test::num = num;
+			cout << num << endl;
 		}
 	private:
 		int num;
 };
 int main(){
 	test x = test();
-	cout << x.get() << endl;
-	x.add();
-	cout << x.get() << endl;
+	x.set(100);
+	// 100
+	// 0
+	// 100
 }
