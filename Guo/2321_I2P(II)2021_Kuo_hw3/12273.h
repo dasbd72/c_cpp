@@ -64,19 +64,15 @@ Matrix::~Matrix(){
 }
 
 Matrix &Matrix::operator=(const Matrix &a){
-    // Matrix b(a);
-    // return b;
-    return Matrix(a);
+    return *this;
 }
 
 Matrix &Matrix::clockwise90(){
-    Matrix *b = new Matrix;
-    *b = *this;
+    Matrix b = *this;
     for(int j = 0, _i = 0; j < size; j++, _i++){
         for(int i = size-1, _j = 0; i >= 0; i--, _j++){
-            b->matrix[_i][_j] = matrix[i][j];
+            b.matrix[_i][_j] = matrix[i][j];
         }
     }
-    std::cout << *b;
-    return *b;
+    return b;
 }
