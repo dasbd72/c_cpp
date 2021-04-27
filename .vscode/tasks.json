@@ -6,10 +6,10 @@
 			"label": "Build_workspaceFolder",
 			"command": "g++",
 			"args": [
-                "'-Wall'",
+                "-Wall",
 				//"'-std=c++17'",
-				"'-g'",
-                "'${file}'",
+				"-g",
+                "'${fileDirname}\\${fileBasenameNoExtension}.cpp'",
                 "-o",
 				"'${workspaceFolder}\\a.exe'",
             ],

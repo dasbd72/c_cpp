@@ -45,32 +45,32 @@ int main()
 		{
 			if(command=="pop_back")
 			{
-				if(rand()&1&&v2.size())
-					v2.pop_back();
+				// if(rand()&1&&v2.size())
+				// 	v2.pop_back();
 				v.pop_back();
-				if(rand()&1&&v2.size())
-					v2.pop_back();
+				// if(rand()&1&&v2.size())
+				// 	v2.pop_back();
 				cout<<v<<endl;
 			}
 			else if(command=="push_back")
 			{
 				cin>>n;
-				if(rand()&1)
-					v2.push_back(n);
+				// if(rand()&1)
+				// 	v2.push_back(n);
 				v.push_back(n);
-				if(rand()&1)
-					v2.push_back(n);
+				// if(rand()&1)
+				// 	v2.push_back(n);
 				cout<<v<<endl;
 			}
 			else if(command=="insert")
 			{
 				size_t pos,count;
 				cin>>pos>>count>>n;
-				if(rand()&1&&pos<=v2.size())
-					v2.insert(pos,count,n);
+				// if(rand()&1&&pos<=v2.size())
+				// 	v2.insert(pos,count,n);
 				v.insert(pos,count,n);
-				if(rand()&1&&pos<=v2.size())
-					v2.insert(pos,count,n);
+				// if(rand()&1&&pos<=v2.size())
+				// 	v2.insert(pos,count,n);
 				cout<<v<<endl;
 			}
 			else if(command=="capacity")
@@ -80,21 +80,21 @@ int main()
 			else if(command=="reserve")
 			{
 				cin>>n;
-				if(rand()&1)
-					v2.reserve(n);
+				// if(rand()&1)
+				// 	v2.reserve(n);
 				v.reserve(n);
-				if(rand()&1)
-					v2.reserve(n);
+				// if(rand()&1)
+				// 	v2.reserve(n);
 				cout<<v<<endl;
 			}
 			else if(command=="resize")
 			{
 				cin>>n;
-				if(rand()&1)
-					v2.resize(n);
+				// if(rand()&1)
+				// 	v2.resize(n);
 				v.resize(n);
-				if(rand()&1)
-					v2.resize(n);
+				// if(rand()&1)
+				// 	v2.resize(n);
 				cout<<v<<endl;
 			}
 		}
