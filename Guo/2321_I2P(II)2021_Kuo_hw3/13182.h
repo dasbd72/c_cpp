@@ -37,3 +37,22 @@ private:
 	int list_num;
 	string blacklist[1009];
 };
+
+Guest::Guest(){
+
+}
+Guest::Guest(string s, int m, int ski){
+	
+}
+
+/*
+2
+Casino 3 1000
+Guest Kuo 1000 20000
+Win Kuo 100000
+Guest Kuo 30 15
+Casino 3 30
+Guest Yang 1000 30
+Win Kuo 1000
+Win Yang 100000
+*/

@@ -85,7 +85,7 @@ namespace oj
 
 	void memory_leak_count_check();	//you don't have to pay attention on this
 
-	
+
 }
 
 namespace oj{

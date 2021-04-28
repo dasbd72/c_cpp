@@ -10,6 +10,15 @@
             "program": "${workspaceFolder}\\a.exe",
             "stopAtEntry": false,
             "console": "externalTerminal"
+        },
+        {
+            "name": "(linux) build and run",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "(linux)Build_workspaceFolder",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/a",
+            "stopAtEntry": false
         }
     ]
 }

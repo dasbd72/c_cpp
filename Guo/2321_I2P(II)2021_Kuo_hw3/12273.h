@@ -22,22 +22,23 @@ private:
     int size;
 }; //end class Matrix
 
-#endif /* function_h */
-
 std::ostream &operator<<(std::ostream &os, const Matrix &m){
     for(int i = 0; i < m.size; i++){
         for(int j = 0; j < m.size; j++){
-            os << m.matrix[i][j] << ' ';
+            os << m.matrix[i][j];
+            if(j != m.size-1) os << ' ';
         }
         os << std::endl;
     }
+    return os;
 }
-std::istream &operator>>(std::istream &os, Matrix &m){
+std::istream &operator>>(std::istream &is, Matrix &m){
     for(int i = 0; i < m.size; i++){
         for(int j = 0; j < m.size; j++){
-            os >> m.matrix[i][j];
+            is >> m.matrix[i][j];
         }
     }
+    return is;
 }
 
 Matrix::Matrix(int s){
@@ -64,15 +65,25 @@ Matrix::~Matrix(){
 }
 
 Matrix &Matrix::operator=(const Matrix &a){
+    // Matrix b(a);
     return *this;
 }
 
 Matrix &Matrix::clockwise90(){
-    Matrix b = *this;
+    Matrix b(*this);
     for(int j = 0, _i = 0; j < size; j++, _i++){
         for(int i = size-1, _j = 0; i >= 0; i--, _j++){
-            b.matrix[_i][_j] = matrix[i][j];
+            matrix[_i][_j] = b.matrix[i][j];
         }
     }
-    return b;
+    return *this;
 }
+/*
+3
+1 2 3
+1 1 1
+1 1 2
+*/
+
+#endif /* function_h */
+
