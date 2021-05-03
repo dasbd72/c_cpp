@@ -38,6 +38,8 @@ private:
 	string blacklist[1009];
 };
 
+#include <iostream>
+
 Guest::Guest(){
 	name = "";
 	money = 0;
@@ -69,7 +71,10 @@ Casino::Casino(){
 	list_num = 0;
 }
 Casino::~Casino(){
-	for(int i = 0; i < guest_num; i++) if(guest[i]) delete guest[i];
+	for(int i = 0; i < guest_num; i++) if(guest[i]) {
+		delete guest[i];	
+		guest[i] = nullptr;
+	}
 }
 void Casino::Enterance(int f){
 	fee = f;
@@ -84,13 +89,15 @@ void Casino::GuestEnter(string s, int m, int ski){
 		if(guest[i] && s == guest[i]->get_name()) return;
 	}
 	// If no money to pay fee
-	if(m < fee){
+	if(m <= fee){
+		// return;
 		income += m;
 		blacklist[list_num++] = s;
 		return;
 	}
 	// Else Add to guest
 	Guest *new_guest = new Guest(s, m-fee, ski);
+	income += fee;
 	for(int i = 0; i < guest_num; i++){
 		if(!guest[i]){
 			guest[i] = new_guest;
@@ -109,22 +116,27 @@ void Casino::Win(string s, int m){
 		if(guest[i] && s == guest[i]->get_name()){
 			// Ban if bankrupt or cheat
 			if(guest[i]->get_money() + m < 0){
-				m = guest[i]->get_money();
+				m = -guest[i]->get_money();
 				blacklist[list_num++] = guest[i]->get_name();
 				delete guest[i];
+				guest[i] = nullptr;
 			} else if(m > 2 * guest[i]->get_skill()){
 				blacklist[list_num++] = guest[i]->get_name();
 				delete guest[i];
+				guest[i] = nullptr;
 			} else {
 				guest[i]->Win(m);
 			}
 			income -= m;
-			break;
+			return;
 		}
 	}
 }
 void Casino::EndDay(){
-	for(int i = 0; i < guest_num; i++) if(guest[i]) delete guest[i];
+	for(int i = 0; i < guest_num; i++) if(guest[i]) {
+		delete guest[i];
+		guest[i] = nullptr;
+	}
 	guest_num = 0;
 }
 void Casino::Result(){

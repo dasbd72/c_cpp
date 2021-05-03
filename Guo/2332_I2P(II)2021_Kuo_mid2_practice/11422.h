@@ -16,7 +16,7 @@ namespace oj
 	private:
 		double area;
 		double perimeter;
-	};
+	}; 
 
 	class Triangle : public Shape
 	{
