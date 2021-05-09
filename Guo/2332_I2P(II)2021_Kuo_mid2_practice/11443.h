@@ -1,3 +1,4 @@
+// AC
 #ifndef SHAPE_H
 #define SHAPE_H
 
@@ -49,6 +50,26 @@ namespace oj
 		Cube(double);
 	};
 }
+#include <cmath>
+namespace oj{
+	Sphere::Sphere(double radius, double pi):radius(radius), pi(pi) {
+		if(radius < 0 || pi < 0) setVolume(0);
+		else setVolume(4.0/3.0 * pi * pow(radius, 3));
+	}
 
+	Cone::Cone(double radius, double height, double pi):radius(radius), height(height), pi(pi){
+		if(radius < 0 || height < 0 || pi < 0) setVolume(0);
+		else setVolume(1.0/3.0 * pi * radius * radius * height);
+	}
+
+	Cuboid::Cuboid(double length, double width, double height):length(length), width(width), height(height){
+		if(length < 0 || width < 0 || height < 0) setVolume(0);
+		else setVolume(length * width * height);
+	}
+
+	Cube::Cube(double length):Cuboid(length, length, length){
+		if(length < 0) setVolume(0);
+	}
+}
 
 #endif

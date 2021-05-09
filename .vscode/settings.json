@@ -4,7 +4,7 @@
         "*.html": "html",
         "cstring": "cpp",
         "iostream": "cpp",
-        "cmath": "c",
+        "cmath": "cpp",
         "algorithm": "cpp",
         "list": "cpp",
         "xutility": "cpp",
