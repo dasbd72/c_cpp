@@ -1,4 +1,4 @@
-// g++ .\11014.cpp .\11014_f.cpp -o 11014 ; .\11014.exe
+// g++ .\11014.cpp .\11014-f.cpp -o a ; .\a.exe
 #include"11014.h"
 // #include"function.h"
 #include <iostream>

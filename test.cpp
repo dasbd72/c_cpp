@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<sstream>
 using namespace std;
 class myClass{
 public:
@@ -7,5 +9,13 @@ public:
     }
 };
 int main(){
-    myClass *obj;
+    int cards = 0;
+	string input;
+	stringstream ss;
+	cin.ignore();
+	while(getline(cin, input, ' ')){
+        if(input == "\n") break;
+		cards += stoi(input);
+	}
+    cout << cards << endl;
 }
