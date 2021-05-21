@@ -1,21 +1,44 @@
-#include<iostream>
-#include<vector>
-#include<sstream>
+#include <iostream>
+
 using namespace std;
-class myClass{
+
+class A {
 public:
-    int a;
-    myClass(const int &num):a{num}{
-    }
+    A() {};
+    ~A() {};
+    void f() {
+        cout << "Calling A\n";
+    };
 };
-int main(){
-    int cards = 0;
-	string input;
-	stringstream ss;
-	cin.ignore();
-	while(getline(cin, input, ' ')){
-        if(input == "\n") break;
-		cards += stoi(input);
-	}
-    cout << cards << endl;
+
+class B : virtual public A {
+public:
+    B() : A() {};
+    ~B() {};
+    void f() {
+        cout << "Calling B\n";
+    };
+};
+
+class C : virtual public A {
+public:
+    C() : A() {};
+    ~C() {};
+    void f() {
+        cout << "Calling C\n";
+    };
+};
+
+class D : public B, public C {
+public:
+    D() : A(), B(), C() {};
+    ~D() {};
+    void f(){
+        cout << "Calling D\n";
+    };
+};
+
+int main() {
+    string s("1234");
+    cout << s.substr(3, -3);
 }
