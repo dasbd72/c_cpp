@@ -1,0 +1,12 @@
+1
+Casino 3 0 10000
+Guest Win 2000 500
+Guest Lose 2000 500
+Twenty One
+1000 1000 1000
+2
+Lose  1000
+2 2
+Win 2000
+10 11
+5 5
