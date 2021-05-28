@@ -1,4 +1,4 @@
-// g++ -std=c++17 -O2 -lm -g 13214.cpp 13214-f.cpp -o 13214.exe; .\13214.exe;
+// g++ -std=c++11 -O2 -lm -g 13214.cpp 13214-f.cpp -o 13214.exe; .\13214.exe;
 #include <iostream>
 #include <sstream>
 #include <string>
