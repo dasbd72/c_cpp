@@ -188,7 +188,7 @@ void Casino::TwentyOne() {
         }
     }
     cout << banker->money << ' ' << guard->money << ' ' << server->money << endl;
-    for (int i = 0; i < player_num; i++) {
+    for (int i = 0; i < player_num; i++) if(record[i]){
         cout << player[i]->name << ' ' << player[i]->money << endl;
     }
     today_income += banker->money;
