@@ -1,45 +1,41 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "shell",
-			"label": "Build_workspaceFolder",
-			"command": "g++",
-			"args": [
-                "-Wall",
-				// "'-std=c++17'",
-				"-g",
-                "'${fileDirname}\\${fileBasenameNoExtension}.cpp'",
-                "-o",
-				"'${workspaceFolder}\\a.exe'",
-            ],
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"type": "shell",
-			"label": "(linux)Build_workspaceFolder",
-			"command": "g++",
-			"args": [
-                "-Wall",
-				// "'-std=c++17'",
-				"-g",
-                "'${fileDirname}/${fileBasenameNoExtension}.cpp'",
-                "-o",
-				"'${workspaceFolder}/a'",
-            ],
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build_workspaceFolder",
+      "command": "g++",
+      "args": [
+        "-Wall",
+        "'-std=c++17'",
+        "-g",
+        "'${fileDirname}\\${fileBasenameNoExtension}.cpp'",
+        "-o",
+        "'${workspaceFolder}\\a.exe'"
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "shell",
+      "label": "(linux)Build_workspaceFolder",
+      "command": "g++",
+      "args": [
+        "-Wall",
+        "'-std=c++17'",
+        "-g",
+        "'${fileDirname}/${fileBasenameNoExtension}.cpp'",
+        "-o",
+        "'${workspaceFolder}/a'"
+      ],
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }

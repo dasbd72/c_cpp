@@ -1,6 +1,3 @@
 {
-    "recommendations": [
-        "ms-vscode.cpptools",
-        "austin.code-gnu-global"
-    ]
+  "recommendations": ["ms-vscode.cpptools", "austin.code-gnu-global"]
 }
