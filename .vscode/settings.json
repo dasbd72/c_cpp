@@ -94,6 +94,6 @@
     "thread": "cpp",
     "typeindex": "cpp",
     "stdbool.h": "c"
-  },
-  "C_Cpp.default.cppStandard": "c++17"
+  }
+  // "C_Cpp.default.cppStandard": "c++17"
 }
