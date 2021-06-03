@@ -7,7 +7,9 @@
       "command": "g++",
       "args": [
         "-Wall",
+        "-Wextra",
         "'-std=c++17'",
+        "-O2",
         "-g",
         "'${fileDirname}\\${fileBasenameNoExtension}.cpp'",
         "-o",

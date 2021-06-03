@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(Window) build and run",
+      "name": "(Win) run",
       "type": "cppvsdbg",
       "request": "launch",
       "preLaunchTask": "Build_workspaceFolder",
@@ -12,7 +12,18 @@
       "console": "externalTerminal"
     },
     {
-      "name": "(linux) build and run",
+      "name": "(Win) dbg",
+      "type": "cppdbg",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}\\a.exe",
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+      "preLaunchTask": "Build_workspaceFolder"
+    },
+    {
+      "name": "(linux) run",
       "type": "cppdbg",
       "request": "launch",
       "preLaunchTask": "(linux)Build_workspaceFolder",

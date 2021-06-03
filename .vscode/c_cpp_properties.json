@@ -2,13 +2,13 @@
   "configurations": [
     {
       "name": "Win64",
-      "intelliSenseMode": "gcc-x86",
+      "intelliSenseMode": "gcc-x64",
       "includePath": [
         "${workspaceRoot}",
-        "C:/MinGW/lib/gcc/mingw32/8.2.0/include",
-        "C:/MinGW/lib/gcc/mingw32/8.2.0/include/c++"
+        "C:/msys64/mingw64/include",
+        "C:/msys64/mingw64/include/c++"
       ],
-      "compilerPath": "C:/MinGW/bin/g++.exe"
+      "compilerPath": "C:/msys64/mingw64/bin/g++.exe"
     },
     {
       "name": "Linux",
