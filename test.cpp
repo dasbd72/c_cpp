@@ -1,11 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 int main() {
-    map<pair<int, int>, int> mp;
-    mp[make_pair(10, 5)] = 10;
-    mp[make_pair(10, 5)] = 1;
-    mp[make_pair(8, 5)] = 1000;
-    for (auto item : mp) {
-        cout << item.first.first << " " << item.first.second << " " << item.second << endl;
+    list<int> a, b;
+    a.push_back(1);
+    a.push_back(5);
+    b = a;
+    b.pop_front();
+    for (auto x : a) {
+        cout << x << " ";
     }
+    cout << endl;
+    for (auto x : b) {
+        cout << x << " ";
+    }
+    cout << endl;
 }
