@@ -11,7 +11,7 @@
         "'-std=c++17'",
         "-O2",
         "-g",
-        "'${fileDirname}\\${fileBasenameNoExtension}.cpp'",
+        "'${fileDirname}\\${fileBasename}'",
         "-o",
         "'${workspaceFolder}\\a.exe'"
       ],
@@ -29,7 +29,7 @@
         "-Wall",
         "'-std=c++17'",
         "-g",
-        "'${fileDirname}/${fileBasenameNoExtension}.cpp'",
+        "'${fileDirname}/${fileBasename}'",
         "-o",
         "'${workspaceFolder}/a'"
       ],
