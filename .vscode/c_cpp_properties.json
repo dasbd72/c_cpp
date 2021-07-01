@@ -9,13 +9,13 @@
         "C:/msys64/mingw64/include/c++"
       ],
       "compilerPath": "C:/msys64/mingw64/bin/g++.exe"
-    },
-    {
-      "name": "Linux",
-      "intelliSenseMode": "gcc-x64",
-      "includePath": ["${workspaceRoot}"],
-      "compilerPath": "/usr/bin/gcc"
     }
+    // {
+    //   "name": "Linux",
+    //   "intelliSenseMode": "gcc-x64",
+    //   "includePath": ["${workspaceRoot}"],
+    //   "compilerPath": "/usr/bin/gcc"
+    // }
   ],
   "version": 4
 }
