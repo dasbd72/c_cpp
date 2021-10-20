@@ -39,36 +39,27 @@ class player {
         card *tmp = begin;
         for (int i = 1; i <= cnt; i++) {
             if (joker && i == 1)
-                tmp = this->insert_ptr(tmp, 0);
+                tmp = tmp->next = new card(0);
             else
-                tmp = this->insert_ptr(tmp, i);
+                tmp = tmp->next = new card(i);
         }
-    }
-    // insert num after the card
-    card *insert_ptr(card *crd, int num) {
-        if (crd == nullptr) {
-            cout << "Insert pos nullptr.\n";
-            return nullptr;
-        }
-        card *tmp = new card(num);
-        tmp->next = crd->next;
-        crd->next = tmp;
-        return tmp;
     }
     // draw and remove card at pos
     card *draw(int pos) {
         card *cur = begin, *tmp;
-        while (--pos) cur = cur->next;
+        while (--pos && cur->next->next != nullptr) cur = cur->next;
         tmp = cur->next;
         cur->next = tmp->next;
+        if (tmp->num == 0) joker--;
         return tmp;
     }
     // insert the card to pos
     void insert(int pos, card *crd) {
         card *cur = begin;
-        while (--pos) cur = cur->next;
+        while (--pos && cur->next != nullptr) cur = cur->next;
         crd->next = cur->next;
         cur->next = crd;
+        if (crd->num == 0) joker++;
         return;
     }
     // print all hand cards
@@ -86,24 +77,27 @@ int main() {
     player ply[105];
     int cur_ply = 1, nxt_ply;
 
-    cin >> N >> M >> K;
-
-    for (int i = 1, x; i <= K; i++) {  // Get people with joker
+    cin >> N >> M >> K;  // Read Input
+    // Get people with joker
+    for (int i = 1, x; i <= K; i++) {
         cin >> x;
         ply[x].setJoker();
     }
 
-    for (int i = 1; i <= N; i++) {  // Initialize hand cards
+    // Initialize hand cards
+    for (int i = 1; i <= N; i++) {
         ply[i].initialize(M);
     }
 
+    // Input loop
     while (cin >> I1 >> I2) {
-        if (I1 == -1 || I2 == -1) break;  // End of input
-        nxt_ply = ((cur_ply + 1) % N == 0) ? cur_ply + 1 : (cur_ply + 1) % N;
-        ply[cur_ply].insert(I2, ply[nxt_ply].draw(I1));
-        cur_ply = nxt_ply;  // Next player's turn
+        if (I1 == -1 || I2 == -1) break;                                       // End of input
+        nxt_ply = ((cur_ply + 1) % N == 0) ? cur_ply + 1 : (cur_ply + 1) % N;  // Calculate nxt_ply's index
+        ply[cur_ply].insert(I2, ply[nxt_ply].draw(I1));                        // Draw from nxt_ply and Insert to cur_ply
+        cur_ply = nxt_ply;                                                     // Next player's turn
     }
 
+    // Print hand cards
     for (int i = 1; i <= N; i++) {
         if (ply[i].getJoker() == 0) {
             ply[i].print();
