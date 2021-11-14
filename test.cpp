@@ -23,9 +23,9 @@ class Node {
     LL kindomval;
     Node* left;
     Node* right;
-    Node* parent;
-    Node() { left = right = parent = nullptr; }
-    Node(LL data) : data(data) { left = right = parent = nullptr; }
+    Node(LL data = 0) : data(data) {
+        left = right = nullptr;
+    }
     bool isleaf() const {
         return (left == nullptr && right == nullptr);
     }
@@ -35,14 +35,17 @@ class Binary_Tree {
     Node* root;
     bool inverted;
 
-    Node* parent(Node* node) const {
-        return node->parent;
-    }
     Node* lchild(Node* node) const {
         return (!inverted ? node->left : node->right);
     }
     Node* rchild(Node* node) const {
         return (!inverted ? node->right : node->left);
+    }
+    void deltree(Node* node) const {
+        if (!node) return;
+        deltree(node->left);
+        deltree(node->right);
+        delete node;
     }
     void rstBinaryTower(Node* node) const {
         if (!node) return;
@@ -52,12 +55,12 @@ class Binary_Tree {
         rstBinaryTower(node->right);
     }
     LL calcBinaryTower(Node* node) const {
-        if (!node || node->isleaf()) return 0;
+        if (!node) return 0;
         LL sum = 0;
         sum += this->calcBinaryTower(node->left);
         sum += this->calcBinaryTower(node->right);
-        if ((node->left && !node->left->isTower) || (node->right && !node->right->isTower)) node->isProtected = true;
-        if ((node->left && !node->left->isProtected) || (node->right && !node->right->isProtected)) {
+        if ((node->left && node->left->isTower) || (node->right && node->right->isTower)) node->isProtected = true;
+        if ((node->left && !node->left->isProtected) || (node->right && !node->right->isProtected) || (node == root && !node->isProtected)) {
             sum += 1;
             node->isTower = true;
             node->isProtected = true;
@@ -79,24 +82,24 @@ class Binary_Tree {
         root = nullptr;
         inverted = false;
     }
-    ~Binary_Tree() {}
+    ~Binary_Tree() {
+        deltree(root);
+    }
     void Construct(string exp) {
-        stack<tuple<int, Node*, int>> expSt;   // start, parent, direction
-        stack<int> parSt;                      // position
-        int* pos = new int[exp.length() + 1];  // next position
+        stack<tuple<int, Node*, int>> expSt;  // start, parent, direction
+        stack<int> parSt;                     // position
+        int* pos = new int[exp.length()];     // next position
         int numl, numr;
         int start, direction;
         Node *parent, *newnode;
 
         for (int i = exp.length() - 1; i >= 0; i--) {  // Locate parenthesis pair
+            pos[i] = 0;
             if (exp[i] == '(') {
                 pos[i] = parSt.top();
                 parSt.pop();
-            } else {
-                pos[i] = 0;
-                if (exp[i] == ')')
-                    parSt.push(i);
-            }
+            } else if (exp[i] == ')')
+                parSt.push(i);
         }
         expSt.push(make_tuple(0, nullptr, 0));
         while (!expSt.empty()) {
@@ -107,10 +110,10 @@ class Binary_Tree {
             if (pos[start] == start + 1) continue;
 
             numl = numr = start + 1;
-            while (isdigit(exp[numr])) numr++;
+            while (isdigit(exp[numr]) || exp[numr] == '-') numr++;
             newnode = new Node(stoll(exp.substr(numl, numr - numl)));
 
-            if (!parent)
+            if (parent == nullptr)
                 root = parent = newnode;
             else if (direction == 0)
                 parent = parent->left = newnode;
@@ -131,7 +134,7 @@ class Binary_Tree {
             output = get<0>(st.top());
             curnode = get<1>(st.top());
             st.pop();
-            if (!curnode) continue;
+            if (curnode == nullptr) continue;
             if (output)
                 cout << curnode->data << " ";
             else {
@@ -189,6 +192,8 @@ class Binary_Tree {
         return this->calcBinaryTower(this->root);
     }
     bool Foldable() const {
+        if (root == nullptr) return true;
+
         queue<tuple<int, int, Node*>> que;  // Height, Idx, Node
         int curheight = 0, curlength = 0, height, idx;
         Node* node;
@@ -198,7 +203,6 @@ class Binary_Tree {
             height = get<0>(que.front());
             idx = get<1>(que.front());
             node = get<2>(que.front());
-            // cout << height << " " << idx << "\n";
             que.pop();
             if (curheight != height) {
                 if (height > 1)
@@ -222,31 +226,39 @@ class Binary_Tree {
         return true;
     }
     void DeleteLeaf() {
+        if (root == nullptr) return;
         if (root->isleaf()) {
+            delete root;
             root = nullptr;
             return;
         }
         Node* curnode;
-        stack<Node*> st;  // operation, node
+        stack<Node*> st;  // node
         st.push(root);
         while (!st.empty()) {
             curnode = st.top();
             st.pop();
-            if (curnode->left && curnode->left->isleaf())
-                curnode->left = nullptr;
-            else
-                st.push(curnode->left);
-            if (curnode->right && curnode->right->isleaf())
-                curnode->right = nullptr;
-            else
-                st.push(curnode->right);
+            if (curnode->left != nullptr) {
+                if (curnode->left->isleaf()) {
+                    delete curnode->left;
+                    curnode->left = nullptr;
+                } else
+                    st.push(curnode->left);
+            }
+            if (curnode->right != nullptr) {
+                if (curnode->right->isleaf()) {
+                    delete curnode->right;
+                    curnode->right = nullptr;
+                } else
+                    st.push(curnode->right);
+            }
         }
     }
     void Invert() {
         inverted = !inverted;
     }
     LL KingdonUnitePath() const {
-        this->calcKindom(root);
+        return (this->calcKindom(root));
     }
 };
 
@@ -256,8 +268,10 @@ int main() {
         Binary_Tree bt;
         bt.Construct(exp);
         while (cin >> op) {
-            if (op == "End") break;
-
+            if (op == "End") {
+                cout << "\n";
+                break;
+            }
             if (op == "Traverse") {
                 bt.Traverse(PREORDER);
                 bt.Traverse(INORDER);
@@ -290,6 +304,22 @@ BinaryTower
 Foldable
 KingdomUnitedPath
 DeleteLeaf
+Invert
+Traverse
+End
+
+(-1(-2(-3(-4()(-4()()))())())())
+(3()())
+()
+(1(2(3()(4()(5()(6()()))))())())
+Traverse
+WeightSum
+MaximumPathSum
+BinaryTower
+Foldable
+KingdomUnitedPath
+DeleteLeaf
+Traverse
 Invert
 Traverse
 End
