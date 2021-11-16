@@ -1,3 +1,4 @@
+// AC
 #include <stdio.h>
 #include <string.h>
 #define MAXSIZE 1005

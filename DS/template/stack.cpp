@@ -18,7 +18,7 @@ class myStack {
 
    public:
     myStack(int size = 1) {
-        capacity = size;
+        capacity = ((size + 1) / 2) * 2;
         myArray = new T[capacity];
         topidx = -1;
     }
@@ -29,16 +29,19 @@ class myStack {
         return topidx == -1;
     }
     T& top() const {
-        if (topidx == -1) throw "Stack is empty. No top.";
+        if (topidx == -1)
+            throw "Stack is empty. No top.";
         return myArray[topidx];
     }
     void push(const T& item) {
-        if (topidx == capacity - 1) this->extendCapacity();
+        if (topidx == capacity - 1)
+            this->extendCapacity();
         myArray[++topidx] = item;
         return;
     }
     void pop() {
-        if (topidx == -1) throw "Stack is empty. Cannot pop.";
+        if (topidx == -1)
+            throw "Stack is empty. Cannot pop.";
         topidx--;
     }
 };

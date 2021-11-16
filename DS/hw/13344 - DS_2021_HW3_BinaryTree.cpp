@@ -8,7 +8,6 @@
 #define INORDER 2
 #define POSTORDER 3
 
-typedef unsigned long long ULL;
 typedef long long LL;
 
 using namespace std;
@@ -161,12 +160,14 @@ class Binary_Tree {
     }
     LL calcKindom(Node* node) const {
         if (!node) return 0;
-        LL maxKindom = 0;
-        node->kindomval = 0;
+        LL maxKindom = 0, lval = 0, rval = 0;
         maxKindom = max(calcKindom(node->left), calcKindom(node->right));
-        if (node->left && node->left->data == node->data) node->kindomval += node->left->kindomval + 1;
-        if (node->right && node->right->data == node->data) node->kindomval += node->right->kindomval + 1;
-        return max(maxKindom, node->kindomval);
+        node->kindomval = 0;
+        if (node->left && node->left->data == node->data) lval = node->left->kindomval + 1;
+        if (node->right && node->right->data == node->data) rval = node->right->kindomval + 1;
+        maxKindom = max(maxKindom, lval + rval);
+        node->kindomval = max(lval, rval);
+        return maxKindom;
     }
 
    public:
@@ -263,8 +264,9 @@ class Binary_Tree {
         return sum;
     }
     LL MaximumPathSum() const {
+        if (root == nullptr) return 0;
         myQueue<tuple<LL, Node*>> que;  // Sum, Node
-        LL maxsum = 0, sum;
+        LL maxsum = -0x7fffffffffffffff, sum;
         Node* node;
         que.push(make_tuple(0, root));
         while (!que.empty()) {
@@ -273,7 +275,7 @@ class Binary_Tree {
             que.pop();
             if (!node) continue;
             sum += node->data;
-            maxsum = max(sum, maxsum);
+            if (node->isleaf()) maxsum = max(sum, maxsum);
             que.push(make_tuple(sum, node->left));
             que.push(make_tuple(sum, node->right));
         }
@@ -285,35 +287,18 @@ class Binary_Tree {
     }
     bool Foldable() const {
         if (root == nullptr) return true;
-
-        myQueue<tuple<int, int, Node*>> que;  // Height, Idx, Node
-        int curheight = 0, curlength = 0, height, idx;
-        Node* node;
-        bool* exist = nullptr;
-        que.push(make_tuple(1, 1, root));
+        Node *lnode, *rnode;
+        myQueue<tuple<Node*, Node*>> que;  // Left Right
+        que.push(make_tuple(root->left, root->right));
         while (!que.empty()) {
-            height = get<0>(que.front());
-            idx = get<1>(que.front());
-            node = get<2>(que.front());
+            lnode = get<0>(que.front());
+            rnode = get<1>(que.front());
             que.pop();
-            if (curheight != height) {
-                if (height > 1)
-                    for (int i = 1, j = curlength / 2 + 1; j <= curlength; i++, j++) {
-                        if (exist[i] != exist[j]) {
-                            delete[] exist;
-                            return false;
-                        }
-                    }
-                if (exist) delete[] exist;
-                curlength = pow(2, height - 1);
-                exist = new bool[curlength + 1];
-                fill(exist, exist + curlength + 1, false);
-                curheight = height;
+            if ((lnode == nullptr) ^ (rnode == nullptr)) return false;
+            if (lnode && rnode) {
+                que.push(make_tuple(lnode->left, rnode->right));
+                que.push(make_tuple(lnode->right, rnode->left));
             }
-            if (!node) continue;
-            exist[idx] = true;
-            que.push(make_tuple(height + 1, idx * 2 - 1, node->left));
-            que.push(make_tuple(height + 1, idx * 2, node->right));
         }
         return true;
     }
@@ -387,37 +372,3 @@ int main() {
     }
     return 0;
 }
-/* 
-(3(2(4()())(5()()))(3(6()())(3()())))
-Traverse
-WeightSum
-MaximumPathSum
-BinaryTower
-Foldable
-KingdomUnitedPath
-DeleteLeaf
-Invert
-Traverse
-End
-
-(-1(-2(-3(-4()(-4()()))())())())
-(3()())
-()
-(1(2(3()(4()(5()(6()()))))())())
-(1(2(4()(5()()))())(3()(6(7()())())))
-Traverse
-WeightSum
-MaximumPathSum
-BinaryTower
-Foldable
-KingdomUnitedPath
-DeleteLeaf
-Traverse
-Invert
-Traverse
-End
-
-(1(2(4()(5()()))())(3()(6(7()())())))
-Foldable
-
- */

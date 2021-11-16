@@ -18,7 +18,7 @@
       "cwd": "${workspaceFolder}",
       "program": "${workspaceFolder}\\a.exe",
       "stopAtEntry": false,
-      "externalConsole": false,
+      "console": "externalTerminal",
       "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
       "preLaunchTask": "Build_workspaceFolder"
     },
