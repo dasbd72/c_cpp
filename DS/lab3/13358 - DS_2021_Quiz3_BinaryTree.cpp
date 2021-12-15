@@ -184,37 +184,6 @@ class Binary_Tree {
         }
         delete[] pos;
     }
-    void Traverse(int order) const {
-        bool output;
-        Node* curnode;
-        myStack<tuple<bool, Node*>> st;  // operation, node
-        st.push(make_tuple(false, root));
-        while (!st.empty()) {
-            output = get<0>(st.top());
-            curnode = get<1>(st.top());
-            st.pop();
-            if (curnode == nullptr)
-                continue;
-            if (output)
-                cout << curnode->data << " ";
-            else {
-                if (order == PREORDER) {
-                    st.push(make_tuple(false, curnode->right));
-                    st.push(make_tuple(false, curnode->left));
-                    st.push(make_tuple(true, curnode));
-                } else if (order == INORDER) {
-                    st.push(make_tuple(false, curnode->right));
-                    st.push(make_tuple(true, curnode));
-                    st.push(make_tuple(false, curnode->left));
-                } else if (order == POSTORDER) {
-                    st.push(make_tuple(true, curnode));
-                    st.push(make_tuple(false, curnode->right));
-                    st.push(make_tuple(false, curnode->left));
-                }
-            }
-        }
-        cout << '\n';
-    }
     LL MagicJump() {
         myQueue<tuple<int, int, Node*>> que;  // Rank, idx(in rank), node
         int rank, idx;
@@ -230,14 +199,12 @@ class Binary_Tree {
             node = get<2>(que.front());
             que.pop();
             if (rank != currank) {
-                // cout << rank << " " << (node ? node->data : -1) << " " << minidx << " " << maxidx << "\n";  //DEBUG
                 maximum = max((maxidx - minidx == 0 ? 0 : maxidx - minidx + 1), maximum);
                 currank = rank;
                 flag = false;
             }
             if (!node)
                 continue;
-            // cout << rank << " " << node->data << "\n";  //DEBUG
             if (!flag) {
                 minidx = idx;
                 flag = true;
@@ -255,7 +222,6 @@ int main() {
     while (cin >> exp) {
         Binary_Tree bt;
         bt.Construct(exp);
-        // bt.Traverse(INORDER);  //DEBUG
         cout << bt.MagicJump() << "\n";
     }
     return 0;
