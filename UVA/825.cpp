@@ -1,10 +1,10 @@
-#include <iostream>
 #include <cstring>
+#include <iostream>
 using namespace std;
-int main(){
+int main() {
     int INP;
     cin >> INP;
-    while(INP--){
+    while (INP--) {
         int blank, W, N;
         cin >> blank;
         cin >> W >> N;
