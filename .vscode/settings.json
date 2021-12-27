@@ -101,7 +101,9 @@
     "coroutine": "cpp",
     "numbers": "cpp",
     "stop_token": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "stdio.h": "c",
+    "string.h": "c"
   },
   "C_Cpp.default.cppStandard": "c++17"
 }
