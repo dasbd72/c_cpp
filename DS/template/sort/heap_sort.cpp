@@ -1,5 +1,5 @@
 #include <iostream>
-// MIN heap
+
 template <class T>
 class myHeap {
    private:
@@ -87,18 +87,21 @@ void myHeap<T>::extendCapacity() {
     std::copy(oldarr, oldarr + oldCapacity, this->arr);
 }
 
-int main() {
-    using namespace std;
-    myHeap<int> hp;
-    hp.push(1);
-    hp.push(5);
-    hp.push(2);
-    hp.push(7);
-    hp.push(3);
-
-    while (!hp.empty()) {
-        cout << hp.top() << " ";
+template <class T>
+void HeapSort(T arr[], int len) {
+    myHeap<T> hp;
+    for (int i = 0; i < len; i++) {
+        hp.push(arr[i]);
+    }
+    for (int i = 0; i < len; i++) {
+        arr[i] = hp.top();
         hp.pop();
     }
-    cout << endl;
+}
+
+int main() {
+    int arr[] = {6, 7, 7, 7, 5, 3, 1, 2, 3};
+    HeapSort(arr, 9);
+    for (auto x : arr) std::cout << x << " ";
+    std::cout << "\n";
 }
