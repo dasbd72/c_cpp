@@ -5,3 +5,4 @@ int main() {
     cin.tie(0);
     return 0;
 }
+// g++ c.cpp ; ./a.out <c.in
