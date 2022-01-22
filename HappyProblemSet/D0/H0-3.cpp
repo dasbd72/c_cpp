@@ -27,14 +27,9 @@ int main() {
         atomicWeight += atom['H'] * 1.008;
         atomicWeight += atom['O'] * 16.0;
         atomicWeight += atom['N'] * 14.01;
-        // cout << "C : " << atom['C'] << "\n";
-        // cout << "H : " << atom['H'] << "\n";
-        // cout << "O : " << atom['O'] << "\n";
-        // cout << "N : " << atom['N'] << "\n";
         cout << fixed << setprecision(3) << atomicWeight << '\n';
     }
 
     return 0;
 }
-// g++ H0-3.cpp ; ./a.out <H0-3.in
-// g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -O2 H0-3.cpp ; ./a.out <H0-3.in
+// g++ -std=c++17 H0-3.cpp ; ./a.out <H0-3.in

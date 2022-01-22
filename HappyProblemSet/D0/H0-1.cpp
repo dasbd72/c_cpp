@@ -25,4 +25,4 @@ int main() {
     }
     return 0;
 }
-// g++ H0-1.cpp ; ./a.out <H0-1.in
+// g++ -std=c++17 H0-1.cpp ; ./a.out <H0-1.in
