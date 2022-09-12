@@ -1,5 +1,8 @@
 #include <iostream>
 using namespace std;
 int main() {
+    for (int i = 0; i < 100; i++) {
+        cout << i << "\n";
+    }
 }
-// g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -O2 c.cpp ; ./a.out <c.in
+// g++ -std=c++17 -Wall -Wextra -fopenmp -O3 Test.cpp
