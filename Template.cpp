@@ -6,3 +6,4 @@ int main() {
     return 0;
 }
 // g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -O2 c.cpp ; ./a.out <c.in
+// g++ -std=c++17 -Wall -Wextra -g -O2 c.cpp ; ./a.exe

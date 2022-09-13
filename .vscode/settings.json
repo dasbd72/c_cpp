@@ -103,7 +103,12 @@
     "stop_token": "cpp",
     "variant": "cpp",
     "stdio.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "barrier": "cpp",
+    "source_location": "cpp",
+    "latch": "cpp",
+    "semaphore": "cpp",
+    "syncstream": "cpp"
   },
   "C_Cpp.default.cppStandard": "c++17"
 }
