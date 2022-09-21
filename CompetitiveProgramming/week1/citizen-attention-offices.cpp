@@ -1,8 +1,4 @@
-// #include <bits/stdc++.h>
-#include <iostream>
-#include <map>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 void solve(int grid[5][5], vector<int>& vec, int& dst, vector<int>& ansvec) {
     if (vec.size() == 5) {

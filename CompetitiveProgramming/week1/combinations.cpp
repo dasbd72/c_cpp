@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 void solve(int A[], int N, int M, vector<int>& vec) {
     if(vec.size() == M) {
