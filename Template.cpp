@@ -8,5 +8,3 @@ int main() {
     solve();
     return 0;
 }
-// g++ -std=c++17 -Wall -Wextra -fsanitize=address -g -O2
-// g++ -std=c++17 -Wall -Wextra -g -O2
