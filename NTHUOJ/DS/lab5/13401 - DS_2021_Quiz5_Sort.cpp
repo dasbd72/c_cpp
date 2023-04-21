@@ -30,15 +30,24 @@ void MergeSort_iter(T arr[], int len) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
     int N, M;
-    int S, E;
-    vector<pair<int, int>> right, left;
+    long long dis = 0;
+    pair<int, int> *arr;
     cin >> N >> M;
+    arr = new pair<int, int>[N];
     for (int i = 0; i < N; i++) {
-        cin >> S >> E;
-        if (E > S)
-            right.push_back(make_pair(S, E));
-        else if (S > E)
-            left.push_back(make_pair(S, E));
+        cin >> arr[i].first >> arr[i].second;
     }
+    MergeSort_iter(arr, N);
+
+    dis += abs(arr[0].second - arr[0].first);
+    for (int i = 1; i < N; i++) {
+        dis += abs(arr[i].second - arr[i].first) + abs(arr[i].second - arr[i].first);
+    }
+    dis += abs(arr[0].second - M);
+    cout << dis << "\n";
+    return 0;
 }
