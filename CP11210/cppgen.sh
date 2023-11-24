@@ -10,3 +10,4 @@ int main() {
     solve();
     return 0;
 }" > $(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".cpp" ; print tolower(substr($0, 0, length($0) ))}' )
+touch $(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".in" ; print tolower(substr($0, 0, length($0) ))}' )
