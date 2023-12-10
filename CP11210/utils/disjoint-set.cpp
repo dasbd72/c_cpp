@@ -8,7 +8,7 @@ class disjoint_set {
    public:
     disjoint_set(int n) : parent(n), rank(n) {
         for (int i = 0; i < n; i++) {
-            parent[i] = 0;
+            parent[i] = i;
             rank[i] = 1;
         }
     }
