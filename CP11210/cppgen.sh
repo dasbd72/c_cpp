@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+cpp=$(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".cpp" ; print tolower(substr($0, 0, length($0) ))}' )
+input=$(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".in" ; print tolower(substr($0, 0, length($0) ))}' )
+
 echo "#include <bits/stdc++.h>
 using namespace std;
 
@@ -12,7 +15,8 @@ int main() {
     cin.tie(0);
     solve();
     return 0;
-}" > $(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".cpp" ; print tolower(substr($0, 0, length($0) ))}' )
-touch $(echo "$1" | sed 's/ /-/g' | awk '{$0=$0 ".in" ; print tolower(substr($0, 0, length($0) ))}' )
+}" > $cpp
+touch $input
+code $cpp $input
 
 exit 0
