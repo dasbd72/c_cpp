@@ -2,19 +2,19 @@
 using namespace std;
 
 typedef long long ll;
-template <class Ty>
+
 class segment_tree {
     struct node {
-        Ty val;
+        ll val;
         int pos;
     };
     int n;
     vector<node> buf;
 
-    Ty op(Ty a, Ty b) {
+    ll op(ll a, ll b) {
         return max(a, b);
     }
-    void dfs_update(int pos, Ty val, int l, int r, int id = 1) {
+    void dfs_update(int pos, ll val, int l, int r, int id = 1) {
         if (pos < l || pos > r)
             return;
         if (l == r) {
@@ -27,7 +27,7 @@ class segment_tree {
         dfs_update(pos, val, m + 1, r, id * 2 + 1);
         buf[id].val = op(buf[id * 2].val, buf[id * 2 + 1].val);
     }
-    pair<Ty, int> dfs_query(Ty val, int l, int r, int id = 1) {
+    pair<ll, int> dfs_query(ll val, int l, int r, int id = 1) {
         if (buf[id].val < val)
             return {0, 0};
         if (l == r)
@@ -42,17 +42,17 @@ class segment_tree {
    public:
     segment_tree(int _n) : n(1 << (int)ceil(log2(_n))), buf(2 * n, {0, 0}) {
     }
-    void update(int pos, Ty val) {
+    void update(int pos, ll val) {
         dfs_update(pos, val, 1, n);
     }
-    pair<Ty, int> query(Ty val) {
+    pair<ll, int> query(ll val) {
         return dfs_query(val, 1, n);
     }
 };
 void solve() {
     int n, m;
     cin >> n >> m;
-    segment_tree<ll> tree(n);
+    segment_tree tree(n);
     for (int i = 1; i <= n; i++) {
         int h;
         cin >> h;
