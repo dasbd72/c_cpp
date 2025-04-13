@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.c": "c",
+    "*.h": "c",
+    "*.cpp": "cpp",
+    "*.hpp": "cpp",
+  },
+  "C_Cpp.default.cppStandard": "c++17",
+  "C_Cpp.autoAddFileAssociations": false
+}

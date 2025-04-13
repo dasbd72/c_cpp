@@ -1,0 +1,25 @@
+{
+  "configurations": [
+    {
+      "name": "macos",
+      "intelliSenseMode": "clang-arm64",
+      "compilerPath": "/usr/bin/g++",
+      "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceRoot}",
+        "/usr/local/include",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++"
+      ]
+    },
+    {
+      "name": "linux",
+      "intelliSenseMode": "gcc-x64",
+      "includePath": [
+        "${workspaceRoot}",
+        "/usr/local/include"
+      ]
+    }
+  ],
+  "version": 4
+}
