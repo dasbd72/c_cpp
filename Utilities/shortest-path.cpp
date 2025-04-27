@@ -15,6 +15,7 @@ vector<ll> dijkstra(vector<vector<pair<int, ll>>> &adj, int src) {
     que.emplace(0, src);
     while (!que.empty()) {
         int u = que.top().second;
+        que.pop();
         if (vis[u])
             continue;
         vis[u] = true;
